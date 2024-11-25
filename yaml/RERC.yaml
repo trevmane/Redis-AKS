@@ -1,3 +1,5 @@
+#Sample RERC.yaml file that assumes we've applied 2 distinct REC.yaml files similar to REC.yaml in this repo. Also assumes our secrets files have been applied to each cluster
+
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseRemoteCluster
 metadata:
