@@ -1,0 +1,71 @@
+Add AKS cluster to ~/.kube config:
+az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_AKS_CLUSTER_NAME
+
+Create Namespace in cluster:
+kubectl create namespace $NS1
+
+Set context to that namespace:
+kubectl config set-context --current --namespace=$NS1
+
+Query latest operator version:
+VERSION=`curl --silent https://api.github.com/repos/RedisLabs/redis-enterprise-k8s-docs/releases/latest | grep tag_name | awk -F'"' '{print $4}'`
+
+Deploy operator with altest version:
+kubectl apply -f https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/$VERSION/bundle.yaml
+
+Add haproxy-ingress controller:
+helm repo add haproxy-ingress https://haproxy-ingress.github.io/charts
+
+Install haproxy-ingress controller:
+helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS1
+
+Create Redis Enterprise Cluster (REC) custom resource:
+k apply -f - <<EOF
+apiVersion: app.redislabs.com/v1
+kind: RedisEnterpriseCluster
+metadata:
+  name: $REC1
+spec:
+  nodes: 3
+  redisEnterpriseNodeResources:
+     limits:
+       cpu: 8000m
+       memory: 32Gi
+     requests:
+       cpu: 6000m
+       memory: 20Gi
+  ingressOrRouteSpec:
+    apiFqdnUrl: api-${REC1}-${NS1}.${WILDCARD_DOMAIN1}
+    dbFqdnSuffix: -db-${REC1}-${NS1}.${WILDCARD_DOMAIN1}
+    ingressAnnotations:
+      kubernetes.io/ingress.class: haproxy
+      ingress.kubernetes.io/ssl-passthrough: "true"
+    method: ingress
+EOF
+
+Obtain externalIP address for ingress-controller service and add that to DNS record:
+kubectl get svc <name-of-haproxy-ingress-svc>
+
+Obtain admission controller secret and save to env variable:
+unset CERT && CERT=`k get secret admission-tls -o jsonpath='{.data.cert}'` && echo $CERT
+
+get webhook.yaml from RE operator repo so we have it locally:
+wget https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/master/admission/webhook.yaml
+
+replace placeholder namespace with our namespace and apply webhook.yaml file:
+sed "s/OPERATOR_NAMESPACE/$NS1/g" webhook.yaml | k create -f -
+
+create a new webhook file for our 1st cluster:
+cat > ${REC1}-webhook.yaml <<EOF
+webhooks:
+- name: redisenterprise.admission.redislabs
+  clientConfig:
+    caBundle: $CERT
+  admissionReviewVersions: ["v1beta1"]
+EOF
+
+Patch our validating webhook configuration with this new file:
+k patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC1}-webhook.yaml)"
+
+obtain our REC secret credentials (Username + password) to be pasted into our secrets.yaml file:
+k get secret $REC1 -o yaml
