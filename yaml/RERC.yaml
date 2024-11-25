@@ -1,0 +1,21 @@
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseRemoteCluster
+metadata:
+  name: rc1
+spec:
+  recName: rec1
+  recNamespace: redis
+  apiFqdnUrl: api-rec1-redis.trevor-k8s-1.demo.redislabs.com
+  dbFqdnSuffix: -db-rec1-redis.trevor-k8s-1.demo.redislabs.com
+  secretName: redis-enterprise-rc1
+---
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseRemoteCluster
+metadata:
+  name: rc2
+spec:
+  recName: rec2
+  recNamespace: redis
+  apiFqdnUrl: api-rec2-redis.trevor-k8s-2.demo.redislabs.com
+  dbFqdnSuffix: -db-rec2-redis.trevor-k8s-2.demo.redislabs.com
+  secretName: redis-enterprise-rc2
