@@ -1,4 +1,4 @@
-#Sample REC.yaml file which includes ingressOrRouteSpec and assumes HAProxy as the ingres-controller
+#Sample REC.yaml file which includes ingressOrRouteSpec and assumes HAProxy as the ingress-controller
 
 apiVersion: app.redislabs.com/v1
 kind: RedisEnterpriseCluster
