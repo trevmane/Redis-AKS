@@ -1,0 +1,13 @@
+apiVersion: app.redislabs.com/v1
+kind: RedisEnterpriseCluster
+metadata:
+  name: rec1
+spec:
+  nodes: 3
+  ingressOrRouteSpec:
+    apiFqdnUrl: api-rec1-redis.trevor-k8s.demo.redislabs.com
+    dbFqdnSuffix: -db-rec1-redis.trevor-k8s.demo.redislabs.com
+    ingressAnnotations:
+      kubernetes.io/ingress.class: haproxy
+      ingress.kubernetes.io/ssl-passthrough: "true"
+    method: ingress
