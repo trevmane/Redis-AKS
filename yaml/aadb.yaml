@@ -1,0 +1,13 @@
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseActiveActiveDatabase
+metadata:
+  name: aadb1
+spec:
+  participatingClusters:
+    - name: rc1
+    - name: rc2
+  globalConfigurations:
+    shardCount: 1
+    replication: true
+  redisEnterpriseCluster:
+    name: rec1
