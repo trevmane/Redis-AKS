@@ -1,1 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-health-check
+  namespace: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-health-check
+  template:
+    metadata:
+      labels:
+        app: redis-health-check
+    spec:
+      containers:
+        # Main container to expose HTTP health-check endpoint
+        - name: health-check-server
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: health-status
+              mountPath: /usr/share/nginx/html
+
+        # Sidecar container to perform the Redis health check
+        - name: redis-health-check-sidecar
+          image: curlimages/curl:7.83.1
+          args:
+            - /bin/sh
+            - -c
+            - |
+              while true; do
+                result=$(curl -k -i -u "demo@redis.com:kanEiKG2" \
+                "https://api-rec1-redis.trev-1.demo.redislabs.com:443/v1/bdbs/2/command" \
+                -H 'Content-Type: application/json' -X POST \
+                -d '{"command":"MSET", "args": ["lb-health-check", "TEST"]}' | head -n 1)
+                if echo "$result" | grep -q "200 OK"; then
+                  echo "Healthy" > /health-status/health.html
+                else
+                  echo "Unhealthy" > /health-status/health.html
+                fi
+                sleep 2
+              done
+          volumeMounts:
+            - name: health-status
+              mountPath: /health-status
+      volumes:
+        - name: health-status
+          emptyDir: {}
 
