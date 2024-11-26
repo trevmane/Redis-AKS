@@ -1,5 +1,6 @@
 Apply reaadb.yaml to ONE cluster:
-k apply -f - <<EOF
+
+kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseActiveActiveDatabase
 metadata:
