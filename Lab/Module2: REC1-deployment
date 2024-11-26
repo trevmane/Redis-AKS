@@ -65,7 +65,7 @@ webhooks:
 EOF
 
 Patch our validating webhook configuration with this new file:
-k patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC1}-webhook.yaml)"
+kubectl patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC1}-webhook.yaml)"
 
 obtain our REC secret credentials (Username + password) to be pasted into our secrets.yaml file:
-k get secret $REC1 -o yaml
+kubectl get secret $REC1 -o yaml
