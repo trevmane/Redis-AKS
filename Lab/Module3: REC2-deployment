@@ -17,7 +17,7 @@ Install haproxy-ingress controller:
 helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS2
 
 Create Redis Enterprise Cluster (REC) custom resource:
-k apply -f - <<EOF
+kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1
 kind: RedisEnterpriseCluster
 metadata:
@@ -62,7 +62,7 @@ webhooks:
 EOF
 
 Patch our validating webhook configuration with this new file:
-k patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC2}-webhook.yaml)"
+kubectl patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC2}-webhook.yaml)"
 
 obtain our REC secret credentials (Username + password) to be pasted into our secrets.yaml file:
 k get secret $REC2 -o yaml
