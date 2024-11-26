@@ -1,5 +1,5 @@
 # Redis-AKS
-Create Redis Cluster(s) and Database(s) running on AKS
+Create Redis Cluster(s) and Database(s) running on AKS. 
 Throughout this repo you will find instructions on how to:
 1) Create 2 AKS clusters to be used for Redis
 2) Deploy Redis Enterprise Operator on each of these clusters
