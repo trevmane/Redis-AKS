@@ -1,8 +1,8 @@
 Apply secrets.yaml file to BOTH clusters to prepare each cluster for RERC deployment:
-k apply -f <name-of-secrets-file>.yaml -n <namespace>
+kubectl apply -f <name-of-secrets-file>.yaml -n <namespace>
 
 Apply RERC.yaml on ONE cluster (you don't need to apply on both):
-k apply -f - <<EOF
+kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseRemoteCluster
 metadata:
