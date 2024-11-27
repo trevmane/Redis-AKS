@@ -1,5 +1,5 @@
 Add AKS cluster to ~/.kube config:
-az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_AKS_CLUSTER_NAME
+''' az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_AKS_CLUSTER_NAME
 
 Create Namespace in cluster:
 kubectl create namespace $NS1
