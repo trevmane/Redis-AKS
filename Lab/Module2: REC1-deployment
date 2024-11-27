@@ -10,7 +10,7 @@ kubectl config set-context --current --namespace=$NS1
 Query latest operator version:
 VERSION=`curl --silent https://api.github.com/repos/RedisLabs/redis-enterprise-k8s-docs/releases/latest | grep tag_name | awk -F'"' '{print $4}'`
 
-Deploy operator with altest version:
+Deploy operator with latest version:
 kubectl apply -f https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/$VERSION/bundle.yaml
 
 Add haproxy-ingress controller:
