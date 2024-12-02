@@ -1,6 +1,15 @@
-Make sure you have AZ CLI, kubectl, and helm installed
+# Lab and Walkthrough
 
-login to your azure account via AZ:
+## Prerequisites
+Make sure you have the following tools installed:
+- **Azure CLI** (`az`)
+- **kubectl**
+- **helm**
+
+## Step 1: Login to Your Azure Account
+Use the following command to log in:
+
+```bash
 az login
 
 
