@@ -1,5 +1,6 @@
-Apply reaadb.yaml to ONE cluster:
+## Apply reaadb.yaml to ONE cluster:
 
+```bash
 kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseActiveActiveDatabase
@@ -13,3 +14,4 @@ spec:
     replication: true
     shardCount: 1
 EOF
+```
