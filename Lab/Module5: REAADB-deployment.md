@@ -19,5 +19,7 @@ EOF
 
 ```bash
 kubectl exec -it <pod-name> -- /bin/bash
+```
+```bash
 redis-cli -h <private-ip-of-reaadb-service> -p <port>
 ```
