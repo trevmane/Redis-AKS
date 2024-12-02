@@ -15,3 +15,9 @@ spec:
     shardCount: 1
 EOF
 ```
+## Connect to your database via redis-cli:
+
+```bash
+kubectl exec -it <pod-name> -- /bin/bash
+redis-cli -h <private-ip-of-reaadb-service> -p <port>
+```
