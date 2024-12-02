@@ -1,7 +1,10 @@
-Apply secrets.yaml file to BOTH clusters to prepare each cluster for RERC deployment:
+## Apply secrets.yaml file to BOTH clusters to prepare each cluster for RERC deployment:
+```bash
 kubectl apply -f <name-of-secrets-file>.yaml -n <namespace>
+```
 
-Apply RERC.yaml on ONE cluster (you don't need to apply on both):
+## Apply RERC.yaml on ONE cluster (you don't need to apply on both):
+```bash
 kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseRemoteCluster
@@ -25,5 +28,5 @@ spec:
   dbFqdnSuffix: -db-${REC2}-${NS2}.${WILDCARD_DOMAIN2}
   secretName: redis-enterprise-rc2
 EOF
-
+```
 
