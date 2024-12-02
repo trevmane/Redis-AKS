@@ -6,6 +6,11 @@ Make sure you have the following tools installed:
 - **kubectl**
 - **helm**
 
+## Add an alias for kubectl to ~/.zshrc or ~/.bashrc
+```bash
+alias k='kubectl'
+```
+
 ## Step 1: Login to Your Azure Account
 Use the following command to log in:
 
