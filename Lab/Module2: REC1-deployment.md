@@ -35,6 +35,11 @@ helm repo add haproxy-ingress https://haproxy-ingress.github.io/charts
 helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS1
 ```
 
+## Validate that your ingress-controller service was created:
+```bash
+kubectl get svc
+```
+
 ## Create Redis Enterprise Cluster (REC) custom resource:
 ```bash
 k apply -f - <<EOF
