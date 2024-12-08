@@ -31,7 +31,7 @@ export WILDCARD_DOMAIN2=<groupname>-2.demo.redislabs.com
 ```
 
 ## Lab Modules Outline:
-1) Prerequisites for deployment
+1) Prerequisites for deployment (Skip to Module2 if you completed pre reqs above)
 2) Deploy RS Operator, ingress and REC in first region
 3) Deploy RS operator, ingress and REC in second region
 4) Apply REC secrets to each cluster and deploy RERC custom resource
