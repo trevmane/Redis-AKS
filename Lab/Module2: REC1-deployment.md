@@ -108,3 +108,23 @@ kubectl get secret $REC1 -o yaml
 ```
 
 ## Copy the "data:" field (username + password) from above and paste into your local secrets.yaml file
+
+```bash
+apiVersion: v1
+metadata:
+  name: redis-enterprise-rc1
+data:
+  password: <my-password>
+  username: ZGVtb0ByZWRpcy5jb20=
+kind: Secret
+type: Opaque
+---
+apiVersion: v1
+metadata:
+  name: redis-enterprise-rc2
+data:
+  password: <my-password>
+  username: ZGVtb0ByZWRpcy5jb20=
+kind: Secret
+type: Opaque
+```
