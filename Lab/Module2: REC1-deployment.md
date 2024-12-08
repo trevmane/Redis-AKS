@@ -51,11 +51,11 @@ spec:
   nodes: 3
   redisEnterpriseNodeResources:
      limits:
-       cpu: 8000m
-       memory: 32Gi
+       cpu: 2000m
+       memory: 4Gi
      requests:
-       cpu: 6000m
-       memory: 20Gi
+       cpu: 1000m
+       memory: 2Gi
   ingressOrRouteSpec:
     apiFqdnUrl: api-${REC1}-${NS1}.${WILDCARD_DOMAIN1}
     dbFqdnSuffix: -db-${REC1}-${NS1}.${WILDCARD_DOMAIN1}
