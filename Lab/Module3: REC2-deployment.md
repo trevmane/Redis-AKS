@@ -103,3 +103,8 @@ data:
 kind: Secret
 type: Opaque
 ```
+
+## apply your secrets file to the current cluster (you will need to apply this secrets.yaml file to the other cluster as well):
+```bash
+kubectl apply -f secrets.yaml
+```
