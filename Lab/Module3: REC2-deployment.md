@@ -30,7 +30,7 @@ kind: RedisEnterpriseCluster
 metadata:
   name: $REC2
 spec:
-    nodes: 3
+  nodes: 3
   redisEnterpriseNodeResources:
      limits:
        cpu: 2000m
