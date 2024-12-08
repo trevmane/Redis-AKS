@@ -81,3 +81,5 @@ kubectl patch ValidatingWebhookConfiguration redis-enterprise-admission --patch 
 ```bash
 kubectl get secret $REC2 -o yaml
 ```
+
+## Paste the "data:" field (username + password) into secrets.yaml file for cluster2:
