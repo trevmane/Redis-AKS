@@ -86,7 +86,7 @@ wget https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/maste
 sed "s/OPERATOR_NAMESPACE/$NS1/g" webhook.yaml | k create -f -
 ```
 
-## create a new webhook file for our 1st cluster:
+## create a new webhook file for our 1st cluster which includes the CERT:
 ```bash
 cat > ${REC1}-webhook.yaml <<EOF
 webhooks:
