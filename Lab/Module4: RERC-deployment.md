@@ -1,11 +1,16 @@
+## Switch to cluster where secrets.yaml has NOT been applied:
+```bash
+az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name <name-of-AKS-cluster>
+```
+
 ## Change context to our REC namespace:
 ```bash
 kubectl config set-context --current --namespace=redis
 ```
 
-## Apply secrets.yaml file to BOTH clusters to prepare each cluster for RERC deployment:
+## Apply secrets.yaml file to remaining cluster to prepare for RERC deployment:
 ```bash
-kubectl apply -f <name-of-secrets-file>.yaml
+kubectl apply -f secrets.yaml
 ```
 
 ## Apply RERC.yaml on ONE cluster (you don't need to apply on both):
