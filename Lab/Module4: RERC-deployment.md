@@ -34,4 +34,7 @@ spec:
   secretName: redis-enterprise-rc2
 EOF
 ```
-
+## Confirm that the RERC was deployed successfully:
+```bash
+kubectl get rerc
+```
