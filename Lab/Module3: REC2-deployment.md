@@ -30,14 +30,14 @@ kind: RedisEnterpriseCluster
 metadata:
   name: $REC2
 spec:
-  nodes: 3
+    nodes: 3
   redisEnterpriseNodeResources:
      limits:
-       cpu: 8000m
-       memory: 32Gi
+       cpu: 2000m
+       memory: 4Gi
      requests:
-       cpu: 6000m
-       memory: 20Gi
+       cpu: 1000m
+       memory: 2Gi
   ingressOrRouteSpec:
     apiFqdnUrl: api-${REC2}-${NS2}.${WILDCARD_DOMAIN2}
     dbFqdnSuffix: -db-${REC2}-${NS2}.${WILDCARD_DOMAIN2}
