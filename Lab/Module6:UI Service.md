@@ -2,6 +2,10 @@
 
 ## Switch to the cluster that contains our REC1
 
+```bash
+az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name <REC1-cluster>
+```
+
 ## Adjust the domain prefix and group-name in the command below before running:
 
 ```bash
@@ -32,4 +36,13 @@ spec:
 EOF
 ```
 
-# We have just created a new ingress resource that will tell our ingress-controller to route requests to our backend UI svc!
+## Navigate to your custom UI FQDN that you created above in your browser
+
+## Obtain the username and password for our REC1 cluster and use those to log in:
+
+```bash
+kubectl get secret rec1 -n redis -o jsonpath='{.data.username}' | base64 --decode
+```
+```bash
+kubectl get secret rec1 -n redis -o jsonpath='{.data.password}' | base64 --decode
+```
