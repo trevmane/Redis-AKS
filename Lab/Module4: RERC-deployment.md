@@ -1,6 +1,11 @@
+## Change context to our REC namespace:
+```bash
+kubectl config set-context --current --namespace=redis
+```
+
 ## Apply secrets.yaml file to BOTH clusters to prepare each cluster for RERC deployment:
 ```bash
-kubectl apply -f <name-of-secrets-file>.yaml -n <namespace>
+kubectl apply -f <name-of-secrets-file>.yaml
 ```
 
 ## Apply RERC.yaml on ONE cluster (you don't need to apply on both):
