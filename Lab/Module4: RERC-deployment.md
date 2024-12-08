@@ -13,7 +13,7 @@ kubectl config set-context --current --namespace=redis
 kubectl apply -f secrets.yaml
 ```
 
-## Apply RERC.yaml on ONE cluster (you don't need to apply on both):
+## Apply RERC.yaml on this cluster (you will need to also apply on the other cluster):
 ```bash
 kubectl apply -f - <<EOF
 apiVersion: app.redislabs.com/v1alpha1
