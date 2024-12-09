@@ -21,7 +21,7 @@ EOF
 kubectl exec -it <pod-name> -- /bin/bash
 ```
 ```bash
-redis-cli -h <private-ip-of-reaadb-service> -p <port>
+redis-cli -h <clusterIP-of-reaadb-service> -p <port>
 ```
 ## Connect to your database via redis-cli from outside the cluster:
 
