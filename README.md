@@ -30,6 +30,7 @@ export MY_RESOURCE_GROUP_NAME=Trevor-rg
 export WILDCARD_DOMAIN1=<groupname>-1.demo.redislabs.com
 export WILDCARD_DOMAIN2=<groupname>-2.demo.redislabs.com
 ```
+Open the secrets.yaml file in the /yaml folder within this repo in a text editor
 
 ## Lab Modules Outline:
 1) Prerequisites for deployment (Skip to Module2 if you completed pre reqs above)
