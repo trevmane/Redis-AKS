@@ -15,11 +15,29 @@ spec:
     shardCount: 1
 EOF
 ```
-## Connect to your database via redis-cli:
+## Connect to your database via redis-cli from within the cluster:
 
 ```bash
 kubectl exec -it <pod-name> -- /bin/bash
 ```
 ```bash
 redis-cli -h <private-ip-of-reaadb-service> -p <port>
+```
+## Connect to your database via redis-cli from outside the cluster:
+
+```bash
+kubectl get ingress
+```
+We need to get our cluster certificate and save it to our local machine (or wherever you want to run redis-cli from)
+```bash
+kubectl exec -it rec1-0 -c redis-enterprise-node -- cat /etc/opt/redislabs/proxy_cert.pem > proxy_cert.pem
+```
+
+```bash
+redis-cli -h <database-service-ingress-name> -p 443 --tls --cacert ./proxy_cert.pem
+```
+
+** Make sure you have at least version 7.0 of redis-cli for TLS support **
+```bash
+redis-cli --version
 ```
