@@ -5,6 +5,10 @@
 ```bash
 az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name <AKS-cluster-for-REC1>
 ```
+## Change to redis/REC namespace
+```bash
+kubectl config set-context --current --namespace=redis
+```
 
 ## Adjust the domain prefix and group-name in the command below before running:
 
