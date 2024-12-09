@@ -22,6 +22,12 @@ kubectl apply -f https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8
 ```bash
 helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS2
 ```
+
+## Validate that our operator and ingress-controller deployments are up:
+```bash
+kubectl get deployments
+```
+
 ## Create Redis Enterprise Cluster (REC) custom resource:
 ```bash
 kubectl apply -f - <<EOF
@@ -55,10 +61,7 @@ kubectl get svc <name-of-haproxy-ingress-svc>
 ```bash 
 unset CERT && CERT=`k get secret admission-tls -o jsonpath='{.data.cert}'` && echo $CERT
 ```
-## get webhook.yaml from RE operator repo so we have it locally:
-```bash
-wget https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/master/admission/webhook.yaml
-```
+
 ## replace placeholder namespace with our namespace and apply webhook.yaml file:
 ```bash
 sed "s/OPERATOR_NAMESPACE/$NS2/g" webhook.yaml | k create -f -
