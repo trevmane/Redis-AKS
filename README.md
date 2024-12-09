@@ -26,6 +26,7 @@ export REC1=rec1
 export NS1=redis
 export REC2=rec2
 export NS2=redis
+export MY_RESOURCE_GROUP_NAME=Trevor-rg
 export WILDCARD_DOMAIN1=<groupname>-1.demo.redislabs.com
 export WILDCARD_DOMAIN2=<groupname>-2.demo.redislabs.com
 ```
