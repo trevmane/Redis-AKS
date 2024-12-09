@@ -3,7 +3,7 @@
 ## Switch to the cluster that contains our REC1
 
 ```bash
-az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name <REC1-cluster>
+az aks get-credentials --resource-group $MY_RESOURCE_GROUP_NAME --name <AKS-cluster-for-REC1>
 ```
 
 ## Adjust the domain prefix and group-name in the command below before running:
