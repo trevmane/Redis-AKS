@@ -80,12 +80,10 @@ EOF
 ```bash
 kubectl patch ValidatingWebhookConfiguration redis-enterprise-admission --patch "$(cat ${REC2}-webhook.yaml)"
 ```
-## Obtain our REC secret credentials (Username + password) to be pasted into our secrets.yaml file:
+## Obtain our REC2 password and paste into secrets.yaml file under redis-enterprise-rc2 (you only need to paste the password):
 ```bash
-kubectl get secret $REC2 -o yaml
+kubectl get secret $REC2 -n redis -o jsonpath='{.data.password}'
 ```
-
-## Copy the "data:" field (username + password) from above and paste into your local secrets.yaml file (redis-enterprise-rc2)
 
 ```bash
 apiVersion: v1
