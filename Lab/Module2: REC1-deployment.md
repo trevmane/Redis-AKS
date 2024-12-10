@@ -34,6 +34,10 @@ helm repo add haproxy-ingress https://haproxy-ingress.github.io/charts
 ```bash
 helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS1
 ```
+## Validate that our operator and ingress-controller deployments are up:
+```bash
+kubectl get deployments
+```
 
 ## Validate that your ingress-controller service was created:
 ```bash
