@@ -27,6 +27,10 @@ helm install haproxy-ingress haproxy-ingress/haproxy-ingress --namespace $NS2
 ```bash
 kubectl get deployments
 ```
+## Validate that your ingress-controller service was created:
+```bash
+kubectl get svc
+```
 
 ## Create Redis Enterprise Cluster (REC) custom resource:
 ```bash
