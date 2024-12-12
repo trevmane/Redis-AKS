@@ -34,7 +34,7 @@ kubectl exec -it rec1-0 -c redis-enterprise-node -- cat /etc/opt/redislabs/proxy
 ```
 
 ```bash
-redis-cli -h <database-service-ingress-name> -p 443 --tls --cacert ./proxy_cert.pem
+redis-cli -h <database-service-ingress-name> -p 443 --SNI <database-service-ingress-name> --tls --cacert ./proxy_cert.pem
 ```
 
 ** Make sure you have at least version 7.0 of redis-cli for TLS support **
